@@ -1,0 +1,53 @@
+name: Test
+on: push
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run unit tests
+        run: npm run-script test:unit
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run visual test
+        run: npm run-script test:visual
+
+      - name: Update screenshots
+        if: failure()
+        run: npm run test:update
+
+      - name: Commit changes
+        if: failure()
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'ci: update screenshots'
+          add: 'screenshots'

@@ -1,0 +1,2 @@
+
+&copy; 1970 THE AUTHORS
