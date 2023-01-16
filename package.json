@@ -1,13 +1,13 @@
 {
-  "name": "oscd-component",
-  "description": "Webcomponent oscd-component following open-wc recommendations",
+  "name": "oscd-dialog",
+  "description": "Webcomponent oscd-dialog following open-wc recommendations",
   "license": "Apache-2.0",
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/oscd-component.js",
-  "module": "dist/oscd-component.js",
+  "main": "dist/oscd-dialog.js",
+  "module": "dist/oscd-dialog.js",
   "exports": {
-    ".": "./dist/oscd-component.js"
+    ".": "./dist/oscd-dialog.js"
   },
   "scripts": {
     "analyze": "cem analyze",
@@ -26,6 +26,8 @@
     "deploy": "npm run storybook:build && gh-pages --dist 'storybook-static'"
   },
   "dependencies": {
+    "@material/mwc-button": "^0.27.0",
+    "@material/mwc-dialog": "^0.27.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
@@ -49,6 +51,7 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "prettier": "^2.4.1",
+    "sinon": "^15.0.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.2"
   },
